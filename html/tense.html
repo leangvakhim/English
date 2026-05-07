@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 English Tenses Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom animations for smooth transitions */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 300ms, transform 300ms;
+        }
+
+        .timeline-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                transform: scale(0.8);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
+
+    <div class="max-w-5xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-[85vh] max-h-[800px]">
+
+        <!-- Header / Progress -->
+        <div class="bg-gray-900 text-white p-4 flex justify-between items-center z-10 shadow-md">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">The 12 Tenses Masterclass</h1>
+                <p class="text-sm text-gray-400 font-medium" id="category-badge">Present Tenses</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-sm font-semibold bg-gray-800 px-3 py-1 rounded-full border border-gray-700"
+                    id="slide-counter">1 / 12</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 overflow-y-auto overflow-x-hidden relative" id="slide-container">
+            <!-- Slide content gets injected here -->
+        </div>
+
+        <!-- Navigation Footer -->
+        <div
+            class="bg-gray-100 p-4 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+
+            <!-- Dots -->
+            <div class="flex space-x-1" id="dots-container">
+                <!-- Dots injected via JS -->
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex space-x-3 w-full sm:w-auto">
+                <button id="prev-btn"
+                    class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed font-medium">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Previous
+                </button>
+                <button id="next-btn"
+                    class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed font-medium">
+                    Next <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/tense.js"></script>
+</body>
+
+</html>
