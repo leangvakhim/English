@@ -45,10 +45,10 @@
 
 <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
 
-    <div class="max-w-5xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-[85vh] max-h-[800px]">
+    <div class="max-w-5xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-[85vh] max-h-[850px]">
 
         <!-- Header / Progress -->
-        <div class="bg-gray-900 text-white p-4 flex justify-between items-center z-10 shadow-md">
+        <div class="bg-gray-900 text-white p-4 flex justify-between items-center z-10 shadow-md shrink-0">
             <div>
                 <h1 class="text-2xl font-bold tracking-tight">The 12 Tenses Masterclass</h1>
                 <p class="text-sm text-gray-400 font-medium" id="category-badge">Present Tenses</p>
@@ -60,14 +60,13 @@
         </div>
 
         <!-- Main Content Area -->
-        <div class="flex-1 overflow-y-auto overflow-x-hidden relative" id="slide-container">
+        <div class="flex-1 overflow-y-auto overflow-x-hidden relative bg-white" id="slide-container">
             <!-- Slide content gets injected here -->
         </div>
 
         <!-- Navigation Footer -->
         <div
-            class="bg-gray-100 p-4 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-
+            class="bg-gray-100 p-4 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0">
             <!-- Dots -->
             <div class="flex space-x-1" id="dots-container">
                 <!-- Dots injected via JS -->

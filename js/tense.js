@@ -33,7 +33,11 @@ const tensesData = [
         name: "Present Simple",
         subtitle: "The Snapshot / Routine",
         formula: "Subject + Verb(s/es)",
-        example: "I study grammar every day.",
+        examples: {
+            positive: "I study grammar every day.",
+            negative: "I do not study grammar every day.",
+            question: "Do I study grammar every day?"
+        },
         meaning: "Used for stating facts, general truths, habits, and permanent situations. It focuses on things that are generally true, not just right now.",
         keywords: "always, usually, often, sometimes, rarely, never, every day, on Mondays",
         svg: createTimelineSVG(`
@@ -58,7 +62,11 @@ const tensesData = [
         name: "Present Continuous",
         subtitle: "The Video Recording",
         formula: "Subject + am/is/are + Verb-ing",
-        example: "I am studying grammar right now.",
+        examples: {
+            positive: "I am studying grammar right now.",
+            negative: "I am not studying grammar right now.",
+            question: "Am I studying grammar right now?"
+        },
         meaning: "Used for an action that is in progress at this exact moment, or around the current time. It emphasizes a temporary state.",
         keywords: "now, right now, at the moment, currently, Look!, Listen!",
         svg: createTimelineSVG(`
@@ -80,7 +88,11 @@ const tensesData = [
         name: "Present Perfect",
         subtitle: "The Bridge to Now",
         formula: "Subject + have/has + V3 (Past Participle)",
-        example: "I have already studied that topic.",
+        examples: {
+            positive: "I have already studied that topic.",
+            negative: "I have not studied that topic yet.",
+            question: "Have I studied that topic yet?"
+        },
         meaning: "Used to connect the past to the present. The action happened at an unstated time in the past, but the *result* or experience is important right now.",
         keywords: "already, yet, just, ever, never, recently, lately, so far",
         svg: createTimelineSVG(`
@@ -100,7 +112,11 @@ const tensesData = [
         name: "Present Perfect Continuous",
         subtitle: "The 'Up to Now' Marathon",
         formula: "Subject + have/has + been + Verb-ing",
-        example: "I have been studying for three hours.",
+        examples: {
+            positive: "I have been studying for three hours.",
+            negative: "I have not been studying for three hours.",
+            question: "Have I been studying for three hours?"
+        },
         meaning: "An action started in the past and has been continuing right up to the present moment. Focuses heavily on the *duration* or visible side-effects.",
         keywords: "for, since, all morning, all day, recently, lately",
         svg: createTimelineSVG(`
@@ -121,7 +137,11 @@ const tensesData = [
         name: "Past Simple",
         subtitle: "The Dead Anchor",
         formula: "Subject + Verb(ed) / V2",
-        example: "I studied grammar yesterday.",
+        examples: {
+            positive: "I studied grammar yesterday.",
+            negative: "I did not study grammar yesterday.",
+            question: "Did I study grammar yesterday?"
+        },
         meaning: "A finished action that happened at a specific, stated time in the past. It has no connection to the present.",
         keywords: "yesterday, last (week/month), ago, in 2020",
         svg: createTimelineSVG(`
@@ -141,7 +161,11 @@ const tensesData = [
         name: "Past Continuous",
         subtitle: "The Background Video",
         formula: "Subject + was/were + Verb-ing",
-        example: "I was studying when the phone rang.",
+        examples: {
+            positive: "I was studying when the phone rang.",
+            negative: "I was not studying when the phone rang.",
+            question: "Was I studying when the phone rang?"
+        },
         meaning: "An action was in progress at a specific moment in the past. Often used to set the scene or show what was happening when a shorter action interrupted it.",
         keywords: "while, when, as, at 8 PM last night",
         svg: createTimelineSVG(`
@@ -164,7 +188,11 @@ const tensesData = [
         name: "Past Perfect",
         subtitle: "The Past of the Past",
         formula: "Subject + had + V3 (Past Participle)",
-        example: "I had already studied before you called.",
+        examples: {
+            positive: "I had already studied before you called.",
+            negative: "I had not studied before you called.",
+            question: "Had I studied before you called?"
+        },
         meaning: "Used when talking about two past actions to make it clear which one happened FIRST. It is the older event.",
         keywords: "before, after, by the time, already, until",
         svg: createTimelineSVG(`
@@ -188,7 +216,11 @@ const tensesData = [
         name: "Past Perfect Continuous",
         subtitle: "The Past Marathon",
         formula: "Subject + had + been + Verb-ing",
-        example: "I had been studying for hours before I slept.",
+        examples: {
+            positive: "I had been studying for hours before I slept.",
+            negative: "I had not been studying for hours before I slept.",
+            question: "Had I been studying for hours before I slept?"
+        },
         meaning: "Focuses on the duration of an ongoing action that was happening *before* another event in the past.",
         keywords: "for, since (leading up to a past event), by the time",
         svg: createTimelineSVG(`
@@ -212,7 +244,11 @@ const tensesData = [
         name: "Future Simple",
         subtitle: "The Plan / Prediction",
         formula: "Subject + will + Verb",
-        example: "I will study grammar tomorrow.",
+        examples: {
+            positive: "I will study grammar tomorrow.",
+            negative: "I will not study grammar tomorrow.",
+            question: "Will I study grammar tomorrow?"
+        },
         meaning: "Used for stating facts about the future, making predictions, promises, or sudden decisions made at the moment of speaking.",
         keywords: "tomorrow, next (week/month), soon, I think, probably",
         svg: createTimelineSVG(`
@@ -231,7 +267,11 @@ const tensesData = [
         name: "Future Continuous",
         subtitle: "The Future Video",
         formula: "Subject + will + be + Verb-ing",
-        example: "At 8 PM tomorrow, I will be studying.",
+        examples: {
+            positive: "At 8 PM tomorrow, I will be studying.",
+            negative: "At 8 PM tomorrow, I will not be studying.",
+            question: "Will I be studying at 8 PM tomorrow?"
+        },
         meaning: "Describes an action that will be *in progress* at a specific, pinpointed time in the future. Imagine teleporting to that future moment.",
         keywords: "at [time] tomorrow, this time next week",
         svg: createTimelineSVG(`
@@ -249,7 +289,11 @@ const tensesData = [
         name: "Future Perfect",
         subtitle: "The Future Deadline",
         formula: "Subject + will + have + V3 (Past Participle)",
-        example: "By Friday, I will have finished studying.",
+        examples: {
+            positive: "By Friday, I will have finished studying.",
+            negative: "By Friday, I will not have finished studying.",
+            question: "Will I have finished studying by Friday?"
+        },
         meaning: "Used to say an action will be 100% completed *before* a specific point or deadline in the future.",
         keywords: "by (tomorrow/Friday), by the time",
         svg: createTimelineSVG(`
@@ -270,7 +314,11 @@ const tensesData = [
         name: "Future Perfect Continuous",
         subtitle: "The Future Milestone",
         formula: "Subject + will + have + been + Verb-ing",
-        example: "By next month, I will have been studying for a year.",
+        examples: {
+            positive: "By next month, I will have been studying for a year.",
+            negative: "By next month, I will not have been studying for a year.",
+            question: "Will I have been studying for a year by next month?"
+        },
         meaning: "Looking forward to a future point to celebrate the accumulated duration of an ongoing action. Focus is on length of time.",
         keywords: "by next [time] + for [duration]",
         svg: createTimelineSVG(`
@@ -355,32 +403,47 @@ function renderSlide(index) {
             </div>
 
             <!-- Bottom/Right: Text Content -->
-            <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center bg-white">
+            <div class="lg:w-1/2 p-8 lg:p-10 flex flex-col justify-center bg-white">
                 <div class="max-w-lg mx-auto w-full">
 
                     <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-1 leading-tight tracking-tight">${data.name}</h2>
-                    <p class="text-lg font-medium ${data.colorClass} mb-8 flex items-center">
+                    <p class="text-lg font-medium ${data.colorClass} mb-6 flex items-center">
                         ${data.subtitle}
                     </p>
 
                     <div class="space-y-6">
 
                         <!-- Formula Box -->
-                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm">
+                        <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 shadow-sm">
                             <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 flex items-center">
                                 <i data-lucide="function-square" class="w-4 h-4 mr-2 text-gray-400"></i> Formula
                             </h3>
                             <p class="font-mono text-gray-800 font-semibold text-sm lg:text-base">${data.formula}</p>
                         </div>
 
-                        <!-- Example -->
+                        <!-- Examples Box (Updated with +, -, ?) -->
                         <div>
-                            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 flex items-center">
-                                <i data-lucide="message-square-quote" class="w-4 h-4 mr-2 text-gray-400"></i> Example
+                            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
+                                <i data-lucide="message-square-quote" class="w-4 h-4 mr-2 text-gray-400"></i> Examples
                             </h3>
-                            <p class="text-xl lg:text-2xl text-gray-900 font-serif italic border-l-4 ${data.borderClass} pl-4 py-1">
-                                "${data.example}"
-                            </p>
+
+                            <div class="space-y-3 font-serif">
+                                <!-- Positive -->
+                                <div class="flex items-start">
+                                    <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-emerald-100 text-emerald-700 font-bold text-xs mr-3 shrink-0 shadow-sm border border-emerald-200">+</span>
+                                    <p class="text-gray-800 text-lg italic leading-snug">"${data.examples.positive}"</p>
+                                </div>
+                                <!-- Negative -->
+                                <div class="flex items-start">
+                                    <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-rose-100 text-rose-700 font-bold text-xs mr-3 shrink-0 shadow-sm border border-rose-200">-</span>
+                                    <p class="text-gray-800 text-lg italic leading-snug">"${data.examples.negative}"</p>
+                                </div>
+                                <!-- Question -->
+                                <div class="flex items-start">
+                                    <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-blue-100 text-blue-700 font-bold text-xs mr-3 shrink-0 shadow-sm border border-blue-200">?</span>
+                                    <p class="text-gray-800 text-lg italic leading-snug">"${data.examples.question}"</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Core Meaning -->
@@ -388,7 +451,7 @@ function renderSlide(index) {
                             <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 flex items-center">
                                 <i data-lucide="info" class="w-4 h-4 mr-2 text-gray-400"></i> Core Meaning & Use
                             </h3>
-                            <p class="text-gray-700 leading-relaxed">${data.meaning}</p>
+                            <p class="text-gray-700 leading-relaxed text-sm lg:text-base">${data.meaning}</p>
                         </div>
 
                         <!-- Keywords -->
