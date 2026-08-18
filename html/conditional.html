@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Conditionals Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* light slate background */
+            color: #334155;
+            /* slate text */
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Timeline styling for graphs */
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #cbd5e1;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            z-index: 2;
+        }
+
+        .timeline-label {
+            position: absolute;
+            transform: translateX(-50%);
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .timeline-label.top {
+            top: 0;
+        }
+
+        .timeline-label.bottom {
+            bottom: 0;
+        }
+
+        .condition-area {
+            position: absolute;
+            top: 20%;
+            height: 60%;
+            background-color: rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .result-area {
+            position: absolute;
+            top: 20%;
+            height: 60%;
+            background-color: rgba(34, 197, 94, 0.2);
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        .timeline-arrow {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid #cbd5e1;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+
+    <div class="max-w-4xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col"
+        style="min-height: 600px;">
+
+        <!-- Header -->
+        <header class="bg-blue-600 text-white p-6 text-center">
+            <h1 class="text-3xl font-bold">Mastering English Conditionals</h1>
+            <p class="text-blue-100 mt-2">A step-by-step visual guide</p>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow p-6 sm:p-10 relative">
+
+            <!-- Slide 0: Introduction -->
+            <div id="slide-0" class="slide active h-full flex flex-col justify-center">
+                <h2 class="text-2xl font-bold mb-4 text-center">What is a Conditional Sentence?</h2>
+                <p class="text-lg mb-6 text-center text-slate-600">Conditional sentences describe the result of a
+                    certain condition. The <strong>if</strong> clause tells you the condition, and the
+                    <strong>main</strong> clause tells you the result.</p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-center w-full sm:w-1/2">
+                        <span class="block text-red-600 font-bold mb-1">Condition (If-clause)</span>
+                        <span class="italic text-slate-700">"If it rains,"</span>
+                    </div>
+                    <div class="text-2xl text-slate-400">➔</div>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center w-full sm:w-1/2">
+                        <span class="block text-green-600 font-bold mb-1">Result (Main clause)</span>
+                        <span class="italic text-slate-700">"I will stay home."</span>
+                    </div>
+                </div>
+
+                <p class="text-center text-slate-600">There are 4 main types: Zero, First, Second, and Third. Let's
+                    explore them.</p>
+            </div>
+
+            <!-- Slide 1: Zero Conditional -->
+            <div id="slide-1" class="slide">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-slate-200 text-slate-700 py-1 px-3 rounded-full font-bold text-sm">Type 0</span>
+                    <h2 class="text-3xl font-bold text-slate-800">The Zero Conditional</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-600">Usage</h3>
+                        <p class="mb-4 bg-blue-50 p-3 rounded-lg border border-blue-100">Used for facts that are
+                            generally or always true (scientific facts, general truths, habits).</p>
+
+                        <h3 class="text-xl font-semibold mb-2 text-purple-600">Structure</h3>
+                        <div class="bg-slate-100 p-3 rounded-lg font-mono text-sm mb-4">
+                            If + <strong>Present Simple</strong>, ... <strong>Present Simple</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">Examples</h3>
+                        <ul class="space-y-3">
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If you heat ice</span>, <span
+                                    class="text-green-600 font-medium">it melts</span>.
+                            </li>
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If it rains</span>, <span
+                                    class="text-green-600 font-medium">the grass gets wet</span>.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-2 text-center text-slate-700">Timeline: Always True</h3>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-arrow"></div>
+
+                        <div class="timeline-label top" style="left: 20%;">Past</div>
+                        <div class="timeline-label top" style="left: 50%;">Present</div>
+                        <div class="timeline-label top" style="left: 80%;">Future</div>
+
+                        <!-- Area covering all time to show general truth -->
+                        <div class="condition-area"
+                            style="left: 10%; width: 35%; background-color: rgba(239, 68, 68, 0.1);"></div>
+                        <div class="result-area"
+                            style="left: 45%; width: 45%; background-color: rgba(34, 197, 94, 0.1);"></div>
+
+                        <div class="text-center mt-8 text-sm text-slate-500">Condition and Result happen consistently
+                            across time.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: First Conditional -->
+            <div id="slide-2" class="slide">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-blue-100 text-blue-700 py-1 px-3 rounded-full font-bold text-sm">Type 1</span>
+                    <h2 class="text-3xl font-bold text-slate-800">The First Conditional</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-600">Usage</h3>
+                        <p class="mb-4 bg-blue-50 p-3 rounded-lg border border-blue-100">Used for real, possible
+                            situations in the future. Things that are likely to happen.</p>
+
+                        <h3 class="text-xl font-semibold mb-2 text-purple-600">Structure</h3>
+                        <div class="bg-slate-100 p-3 rounded-lg font-mono text-sm mb-4">
+                            If + <strong>Present Simple</strong>, ... <strong>will + infinitive</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">Examples</h3>
+                        <ul class="space-y-3">
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If I study hard</span>, <span
+                                    class="text-green-600 font-medium">I will pass the exam</span>.
+                            </li>
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If it doesn't rain tomorrow</span>, <span
+                                    class="text-green-600 font-medium">we will go to the beach</span>.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-2 text-center text-slate-700">Timeline: Real Future Possibility
+                    </h3>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-arrow"></div>
+
+                        <div class="timeline-label top" style="left: 50%;">Present (Now)</div>
+                        <div class="timeline-marker" style="left: 50%; background-color: #94a3b8;"></div>
+
+                        <!-- Condition might happen now/soon, Result is in future -->
+                        <div class="timeline-marker" style="left: 65%; background-color: #ef4444;"></div>
+                        <div class="timeline-label bottom text-red-500 text-sm" style="left: 65%; top: 20px;">
+                            Condition<br>(Possible)</div>
+
+                        <div class="timeline-marker" style="left: 85%; background-color: #22c55e;"></div>
+                        <div class="timeline-label bottom text-green-600 text-sm" style="left: 85%; top: 20px;">
+                            Result<br>(Likely)</div>
+
+                        <div class="text-center mt-12 text-sm text-slate-500">Looking forward from the present to a
+                            likely future outcome.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Second Conditional -->
+            <div id="slide-3" class="slide">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-purple-100 text-purple-700 py-1 px-3 rounded-full font-bold text-sm">Type 2</span>
+                    <h2 class="text-3xl font-bold text-slate-800">The Second Conditional</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-600">Usage</h3>
+                        <p class="mb-4 bg-blue-50 p-3 rounded-lg border border-blue-100">Used for imaginary, unlikely,
+                            or impossible situations in the present or future.</p>
+
+                        <h3 class="text-xl font-semibold mb-2 text-purple-600">Structure</h3>
+                        <div class="bg-slate-100 p-3 rounded-lg font-mono text-sm mb-4">
+                            If + <strong>Past Simple</strong>, ... <strong>would + infinitive</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">Examples</h3>
+                        <ul class="space-y-3">
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If I won the lottery</span>, <span
+                                    class="text-green-600 font-medium">I would buy a house</span>.
+                                <div class="text-xs text-slate-500 mt-1">(But I probably won't win)</div>
+                            </li>
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If I were you</span>, <span
+                                    class="text-green-600 font-medium">I would apologize</span>.
+                                <div class="text-xs text-slate-500 mt-1">(Impossible, I am not you)</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-2 text-center text-slate-700">Timeline: Imaginary Present/Future
+                    </h3>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-arrow"></div>
+
+                        <div class="timeline-label top" style="left: 50%;">Present (Now)</div>
+                        <div class="timeline-marker" style="left: 50%; background-color: #94a3b8;"></div>
+
+                        <!-- Imaginary floating above timeline -->
+                        <div class="absolute w-full flex justify-center" style="top: -40px;">
+                            <div
+                                class="border border-dashed border-slate-400 p-2 rounded-lg bg-slate-50 flex gap-4 opacity-70">
+                                <div class="text-red-500 text-sm font-semibold">Imagined Condition</div>
+                                <div class="text-slate-400">➔</div>
+                                <div class="text-green-600 text-sm font-semibold">Imagined Result</div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-12 text-sm text-slate-500">The situation is not real; it is a
+                            hypothetical scenario right now or in the future.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Third Conditional -->
+            <div id="slide-4" class="slide">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-orange-100 text-orange-700 py-1 px-3 rounded-full font-bold text-sm">Type 3</span>
+                    <h2 class="text-3xl font-bold text-slate-800">The Third Conditional</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-600">Usage</h3>
+                        <p class="mb-4 bg-blue-50 p-3 rounded-lg border border-blue-100">Used for imaginary situations
+                            in the <strong>past</strong>. It describes things that didn't happen and their imagined past
+                            results (often used for regrets).</p>
+
+                        <h3 class="text-xl font-semibold mb-2 text-purple-600">Structure</h3>
+                        <div class="bg-slate-100 p-3 rounded-lg font-mono text-sm mb-4">
+                            If + <strong>Past Perfect</strong>, ... <strong>would have + past participle</strong>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-600">Examples</h3>
+                        <ul class="space-y-3">
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If I had studied harder</span>, <span
+                                    class="text-green-600 font-medium">I would have passed the exam</span>.
+                                <div class="text-xs text-slate-500 mt-1">(Reality: I didn't study hard, so I failed.)
+                                </div>
+                            </li>
+                            <li class="bg-white border border-slate-200 p-3 rounded shadow-sm">
+                                <span class="text-red-500 font-medium">If we had left earlier</span>, <span
+                                    class="text-green-600 font-medium">we wouldn't have missed the train</span>.
+                                <div class="text-xs text-slate-500 mt-1">(Reality: We left late, so we missed it.)</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-2 text-center text-slate-700">Timeline: Imaginary Past</h3>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-arrow"></div>
+
+                        <div class="timeline-label top" style="left: 70%;">Present (Now)</div>
+                        <div class="timeline-marker" style="left: 70%; background-color: #94a3b8;"></div>
+
+                        <!-- Real past events -->
+                        <div class="timeline-marker" style="left: 20%; background-color: #1e293b;"></div>
+                        <div class="timeline-label bottom text-slate-700 text-xs" style="left: 20%; top: 25px;">Real
+                            Event<br>(Didn't study)</div>
+
+                        <!-- Imaginary past events floating above -->
+                        <div class="absolute w-full" style="top: -30px;">
+                            <div class="flex gap-4 justify-start pl-[15%] opacity-70">
+                                <div
+                                    class="border border-dashed border-red-300 p-1 px-2 rounded bg-red-50 text-red-500 text-xs font-semibold">
+                                    Imagined Past Condition<br>(If I had studied)</div>
+                                <div class="text-slate-400 mt-2">➔</div>
+                                <div
+                                    class="border border-dashed border-green-300 p-1 px-2 rounded bg-green-50 text-green-600 text-xs font-semibold">
+                                    Imagined Past Result<br>(would have passed)</div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-12 text-sm text-slate-500">Looking back at the past and imagining a
+                            different reality.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Summary -->
+            <div id="slide-5" class="slide">
+                <h2 class="text-3xl font-bold text-slate-800 text-center mb-6">Summary Table</h2>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-slate-200 rounded-lg overflow-hidden">
+                        <thead class="bg-slate-100 text-slate-700">
+                            <tr>
+                                <th class="py-3 px-4 text-left border-b">Type</th>
+                                <th class="py-3 px-4 text-left border-b">Usage</th>
+                                <th class="py-3 px-4 text-left border-b">Time</th>
+                                <th class="py-3 px-4 text-left border-b">Structure</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-slate-600">Zero (0)</td>
+                                <td class="py-3 px-4">General truths, facts</td>
+                                <td class="py-3 px-4">Any Time</td>
+                                <td class="py-3 px-4 font-mono text-xs">If + Present, ... Present</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-blue-600">First (1)</td>
+                                <td class="py-3 px-4">Real/Possible future situations</td>
+                                <td class="py-3 px-4">Present/Future</td>
+                                <td class="py-3 px-4 font-mono text-xs">If + Present, ... will + inf</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-purple-600">Second (2)</td>
+                                <td class="py-3 px-4">Imaginary/Unlikely situations</td>
+                                <td class="py-3 px-4">Present/Future</td>
+                                <td class="py-3 px-4 font-mono text-xs">If + Past Simple, ... would + inf</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-3 px-4 font-bold text-orange-600">Third (3)</td>
+                                <td class="py-3 px-4">Imaginary past (regrets)</td>
+                                <td class="py-3 px-4">Past</td>
+                                <td class="py-3 px-4 font-mono text-xs">If + Past Perfect, ... would have + p.p.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 text-center bg-blue-50 p-4 rounded-lg">
+                    <p class="font-medium text-blue-800">Tip: You can always swap the order of the clauses!</p>
+                    <p class="text-blue-600 text-sm mt-1">"If it rains, I will stay home." = "I will stay home if it
+                        rains." (Note: no comma needed if 'If' is in the middle).</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer / Controls -->
+        <footer class="bg-slate-50 border-t border-slate-200 p-4 sm:px-10 flex justify-between items-center">
+            <button id="prevBtn"
+                class="px-6 py-2 rounded-lg font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                disabled>
+                &larr; Back
+            </button>
+
+            <div class="flex gap-2" id="dots-container">
+                <!-- Dots generated by JS -->
+            </div>
+
+            <button id="nextBtn"
+                class="px-6 py-2 rounded-lg font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+                Next &rarr;
+            </button>
+        </footer>
+    </div>
+
+    <script src="../js/conditional.js"></script>
+</body>
+
+</html>

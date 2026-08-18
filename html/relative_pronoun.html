@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Relative Pronouns</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* Slate 50 */
+            color: #1e293b;
+            /* Slate 800 */
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom graph styles */
+        .node {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        .connector {
+            width: 2px;
+            height: 20px;
+            background-color: #cbd5e1;
+            /* Slate 300 */
+            margin: 0 auto;
+        }
+
+        .connector-horizontal {
+            height: 2px;
+            width: 40px;
+            background-color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+
+    <div class="max-w-5xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-[85vh] sm:h-[80vh]">
+
+        <!-- Header -->
+        <header class="bg-blue-600 text-white p-6 text-center shrink-0">
+            <h1 class="text-3xl font-bold tracking-tight">Mastering Relative Pronouns</h1>
+            <p class="text-blue-100 mt-2">A step-by-step guide to connecting your sentences.</p>
+        </header>
+
+        <!-- Content Area -->
+        <main class="flex-grow overflow-y-auto p-6 sm:p-10" id="content-area">
+
+            <!-- Page 1: Introduction -->
+            <section id="page-0" class="page active">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4">What is a Relative Pronoun?</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        A relative pronoun introduces a dependent (relative) clause and connects it to an independent
+                        clause. It essentially acts as a bridge, giving more information about a noun mentioned
+                        previously.
+                    </p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 mb-8 text-center">
+                    <h3 class="font-semibold text-blue-800 mb-2">The Basic Structure</h3>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+                        <div class="bg-white px-4 py-3 rounded-lg shadow-sm border border-slate-200">
+                            <span class="text-slate-500 text-sm block mb-1">Independent Clause</span>
+                            <span class="font-medium text-slate-800">I met a man</span>
+                        </div>
+                        <div class="flex items-center text-blue-600 font-bold">
+                            <svg class="w-6 h-6 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                            <svg class="w-6 h-6 sm:hidden rotate-90" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
+                        <div class="bg-blue-600 text-white px-4 py-3 rounded-lg shadow-sm">
+                            <span class="text-blue-200 text-sm block mb-1">Relative Pronoun</span>
+                            <span class="font-medium">who</span>
+                        </div>
+                        <div class="flex items-center text-blue-600 font-bold">
+                            <svg class="w-6 h-6 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                            <svg class="w-6 h-6 sm:hidden rotate-90" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
+                        <div class="bg-white px-4 py-3 rounded-lg shadow-sm border border-slate-200">
+                            <span class="text-slate-500 text-sm block mb-1">Relative Clause</span>
+                            <span class="font-medium text-slate-800">lives in Spain.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-6">
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">1. Core</h4>
+                        <p class="text-sm text-slate-600">The essential connectors (who, whom, whose, which, that).</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">2. Compound</h4>
+                        <p class="text-sm text-slate-600">Pronouns combined with "-ever" (whoever, whatever).</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">3. Adverbs</h4>
+                        <p class="text-sm text-slate-600">Connecting based on time, place, or reason (when, where, why).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 2: Core Relative Pronouns -->
+            <section id="page-1" class="page">
+                <h2 class="text-2xl font-bold text-blue-700 mb-2">Core Relative Pronouns</h2>
+                <p class="text-slate-600 mb-8">These are the most common relative pronouns. Their usage depends on
+                    whether they refer to people or things, and their grammatical role (subject, object, or possessive)
+                    in the relative clause.</p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Rules Table -->
+                    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+                        <div class="bg-slate-50 px-4 py-3 border-b border-slate-200">
+                            <h3 class="font-semibold text-slate-800">Usage Matrix</h3>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex flex-col text-sm">
+                                <div class="flex border-b border-slate-100 pb-2 mb-2 font-semibold text-slate-500">
+                                    <div class="w-1/3">Role</div>
+                                    <div class="w-1/3">People</div>
+                                    <div class="w-1/3">Things/Animals</div>
+                                </div>
+                                <div class="flex border-b border-slate-100 pb-2 mb-2">
+                                    <div class="w-1/3 font-medium text-slate-700">Subject</div>
+                                    <div class="w-1/3 text-blue-600 font-bold">who, that</div>
+                                    <div class="w-1/3 text-emerald-600 font-bold">which, that</div>
+                                </div>
+                                <div class="flex border-b border-slate-100 pb-2 mb-2">
+                                    <div class="w-1/3 font-medium text-slate-700">Object</div>
+                                    <div class="w-1/3 text-blue-600 font-bold">whom, who, that</div>
+                                    <div class="w-1/3 text-emerald-600 font-bold">which, that</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 font-medium text-slate-700">Possessive</div>
+                                    <div class="w-1/3 text-purple-600 font-bold">whose</div>
+                                    <div class="w-1/3 text-purple-600 font-bold">whose</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                            <p class="font-semibold text-blue-900">Who (Subject / People)</p>
+                            <p class="text-slate-700 mt-1">The student <span
+                                    class="font-bold text-blue-600 underline">who</span> studied hard got an A.</p>
+                        </div>
+                        <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-r-lg">
+                            <p class="font-semibold text-emerald-900">Which (Subject/Object / Things)</p>
+                            <p class="text-slate-700 mt-1">The book <span
+                                    class="font-bold text-emerald-600 underline">which</span> I read was excellent.</p>
+                        </div>
+                        <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r-lg">
+                            <p class="font-semibold text-purple-900">Whose (Possessive)</p>
+                            <p class="text-slate-700 mt-1">I met a girl <span
+                                    class="font-bold text-purple-600 underline">whose</span> mother is a doctor.</p>
+                        </div>
+                        <div class="bg-slate-100 border-l-4 border-slate-500 p-4 rounded-r-lg">
+                            <p class="font-semibold text-slate-900">That (Informal / People or Things)</p>
+                            <p class="text-slate-700 mt-1">Where is the car <span
+                                    class="font-bold text-slate-600 underline">that</span> you bought?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 3: Compound Relative Pronouns -->
+            <section id="page-2" class="page">
+                <h2 class="text-2xl font-bold text-emerald-700 mb-2">Compound Relative Pronouns</h2>
+                <p class="text-slate-600 mb-8">Formed by adding "-ever" or "-soever" to relative pronouns. They are more
+                    general and mean "any person who," "any thing which," etc. They do not refer to a specific noun
+                    antecedent.</p>
+
+                <div class="flex flex-col items-center mb-10">
+                    <!-- Visual Graph for Compound -->
+                    <div class="flex items-center justify-center w-full max-w-lg mb-6">
+                        <div class="node bg-blue-100 text-blue-800 border-2 border-blue-300">who / whom / which / what
+                        </div>
+                        <div class="connector-horizontal mx-2"></div>
+                        <div
+                            class="node bg-yellow-100 text-yellow-800 border-2 border-yellow-300 rounded-full w-12 h-12">
+                            +</div>
+                        <div class="connector-horizontal mx-2"></div>
+                        <div class="node bg-red-100 text-red-800 border-2 border-red-300">ever</div>
+                    </div>
+                </div>
+
+                <div class="grid gap-4">
+                    <div
+                        class="flex flex-col md:flex-row bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-emerald-600 text-white p-4 md:w-1/3 flex items-center justify-center">
+                            <h3 class="text-xl font-bold text-center">Whoever <br><span
+                                    class="text-sm font-normal text-emerald-200">(Subject)</span></h3>
+                        </div>
+                        <div class="p-5 md:w-2/3">
+                            <p class="text-slate-600 text-sm uppercase tracking-wide font-semibold mb-1">Meaning</p>
+                            <p class="text-slate-800 mb-3">Any person who.</p>
+                            <p class="text-slate-600 text-sm uppercase tracking-wide font-semibold mb-1">Example</p>
+                            <p class="text-slate-800 italic">"<span class="font-bold text-emerald-600">Whoever</span>
+                                finishes first wins a prize."</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex flex-col md:flex-row bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-teal-600 text-white p-4 md:w-1/3 flex items-center justify-center">
+                            <h3 class="text-xl font-bold text-center">Whomever <br><span
+                                    class="text-sm font-normal text-teal-200">(Object)</span></h3>
+                        </div>
+                        <div class="p-5 md:w-2/3">
+                            <p class="text-slate-600 text-sm uppercase tracking-wide font-semibold mb-1">Meaning</p>
+                            <p class="text-slate-800 mb-3">Any person whom.</p>
+                            <p class="text-slate-600 text-sm uppercase tracking-wide font-semibold mb-1">Example</p>
+                            <p class="text-slate-800 italic">"You can invite <span
+                                    class="font-bold text-teal-600">whomever</span> you like."</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex flex-col md:flex-row bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-indigo-600 text-white p-4 md:w-1/3 flex items-center justify-center">
+                            <h3 class="text-xl font-bold text-center">Whatever / Whichever</h3>
+                        </div>
+                        <div class="p-5 md:w-2/3">
+                            <p class="text-slate-600 text-sm uppercase tracking-wide font-semibold mb-1">Meaning</p>
+                            <p class="text-slate-800 mb-3">Anything that / Any one that (from a choice).</p>
+                            <p class="text-slate-600 text-sm uppercase tracking-wide font-semibold mb-1">Example</p>
+                            <p class="text-slate-800 italic">"Take <span
+                                    class="font-bold text-indigo-600">whatever</span> you need from the fridge."</p>
+                            <p class="text-slate-800 italic mt-1">"Choose <span
+                                    class="font-bold text-indigo-600">whichever</span> flavor you prefer."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 4: Relative Adverbs -->
+            <section id="page-3" class="page">
+                <h2 class="text-2xl font-bold text-purple-700 mb-2">Relative Adverbs</h2>
+                <p class="text-slate-600 mb-8">Relative adverbs connect clauses just like relative pronouns, but they
+                    refer to a time, place, or reason. They can often replace a relative pronoun combined with a
+                    preposition (e.g., *where* = *in/at which*).</p>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Where -->
+                    <div
+                        class="bg-white border-2 border-rose-200 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center text-center">
+                        <div class="bg-rose-100 w-full py-4 flex justify-center">
+                            <svg class="w-12 h-12 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-rose-700 mb-1">Where</h3>
+                            <p class="text-sm text-slate-500 mb-4">Refers to a <strong>Place</strong></p>
+                            <div class="text-left bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <p class="text-sm text-slate-700">"This is the house <span
+                                        class="font-bold text-rose-600 underline">where</span> I grew up."</p>
+                                <p class="text-xs text-slate-400 mt-2 italic">= in which I grew up</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- When -->
+                    <div
+                        class="bg-white border-2 border-amber-200 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center text-center">
+                        <div class="bg-amber-100 w-full py-4 flex justify-center">
+                            <svg class="w-12 h-12 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-700 mb-1">When</h3>
+                            <p class="text-sm text-slate-500 mb-4">Refers to a <strong>Time</strong></p>
+                            <div class="text-left bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <p class="text-sm text-slate-700">"I remember the day <span
+                                        class="font-bold text-amber-600 underline">when</span> we met."</p>
+                                <p class="text-xs text-slate-400 mt-2 italic">= on which we met</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why -->
+                    <div
+                        class="bg-white border-2 border-sky-200 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center text-center">
+                        <div class="bg-sky-100 w-full py-4 flex justify-center">
+                            <svg class="w-12 h-12 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-sky-700 mb-1">Why</h3>
+                            <p class="text-sm text-slate-500 mb-4">Refers to a <strong>Reason</strong></p>
+                            <div class="text-left bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <p class="text-sm text-slate-700">"Tell me the reason <span
+                                        class="font-bold text-sky-600 underline">why</span> you are late."</p>
+                                <p class="text-xs text-slate-400 mt-2 italic">= for which you are late</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer / Controls -->
+        <footer
+            class="bg-slate-50 border-t border-slate-200 p-4 sm:px-8 flex justify-between items-center shrink-0 rounded-b-2xl">
+            <button id="btn-back"
+                class="px-5 py-2.5 rounded-lg font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">
+                &larr; Back
+            </button>
+
+            <!-- Progress Indicators -->
+            <div class="flex gap-2" id="progress-dots">
+                <div class="w-2.5 h-2.5 rounded-full bg-blue-600 transition-colors" data-index="0"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-index="1"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-index="2"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-index="3"></div>
+            </div>
+
+            <button id="btn-next"
+                class="px-5 py-2.5 rounded-lg font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm flex items-center gap-2">
+                Next <span id="next-icon">&rarr;</span>
+            </button>
+        </footer>
+    </div>
+
+    <script src="../js/relative_pronoun.js"></script>
+</body>
+
+</html>

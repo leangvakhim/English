@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Passive Tenses Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* light slate background */
+            color: #1e293b;
+        }
+
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-axis {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #cbd5e1;
+            transform: translateY(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            background-color: #64748b;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .marker-past {
+            left: 20%;
+        }
+
+        .marker-present {
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            background-color: #334155;
+        }
+
+        .marker-future {
+            left: 80%;
+        }
+
+        .timeline-label {
+            position: absolute;
+            top: calc(50% + 15px);
+            transform: translateX(-50%);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        /* Action visualizers on the timeline */
+        .action-point {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #3b82f6;
+            /* Blue for action */
+            border-radius: 50%;
+            border: 4px solid #eff6ff;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        .action-duration {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 12px;
+            background-color: rgba(59, 130, 246, 0.4);
+            border: 2px solid #3b82f6;
+            border-radius: 6px;
+            z-index: 5;
+            transition: all 0.5s ease;
+        }
+
+        .action-wave {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20px;
+            z-index: 5;
+            background: repeating-linear-gradient(45deg,
+                    rgba(59, 130, 246, 0.2),
+                    rgba(59, 130, 246, 0.2) 5px,
+                    rgba(59, 130, 246, 0.5) 5px,
+                    rgba(59, 130, 246, 0.5) 10px);
+            border-radius: 4px;
+            border: 1px solid #3b82f6;
+            transition: all 0.5s ease;
+        }
+
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 300ms, transform 300ms;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-8">
+
+    <div class="max-w-3xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col">
+
+        <!-- Header -->
+        <div class="bg-blue-600 text-white p-6 text-center">
+            <p id="step-counter" class="text-blue-200 text-sm font-semibold tracking-wide uppercase mb-1">Tense 1 of 8
+            </p>
+            <h1 id="tense-title" class="text-3xl font-bold">Present Simple Passive</h1>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="p-6 sm:p-10 flex-grow" id="content-area">
+
+            <!-- Meaning Section -->
+            <div class="mb-8">
+                <h2 class="text-lg font-semibold text-slate-800 border-b-2 border-slate-100 pb-2 mb-3">What does it
+                    mean?</h2>
+                <p id="tense-meaning" class="text-slate-600 leading-relaxed text-lg">
+                    Used for regular actions, habits, or general truths where the receiver of the action is more
+                    important than who does it.
+                </p>
+            </div>
+
+            <!-- Structure Section -->
+            <div class="mb-8 bg-slate-50 rounded-xl p-5 border border-slate-200">
+                <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Structure</h2>
+                <div class="text-xl font-bold text-slate-800 text-center font-mono" id="tense-structure">
+                    Object + am / is / are + Past Participle (V3)
+                </div>
+            </div>
+
+            <!-- Examples Section -->
+            <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                    <span class="text-xs font-bold text-red-600 uppercase tracking-wider block mb-1">Active Voice</span>
+                    <p id="active-example" class="text-slate-700 italic">"They make cars in Germany."</p>
+                    <p class="text-xs text-slate-500 mt-2">Focus on "They" (the doer).</p>
+                </div>
+                <div
+                    class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500 shadow-sm relative transform scale-105">
+                    <span class="text-xs font-bold text-green-700 uppercase tracking-wider block mb-1">Passive
+                        Voice</span>
+                    <p id="passive-example" class="text-slate-800 font-semibold">"Cars are made in Germany."</p>
+                    <p class="text-xs text-slate-500 mt-2">Focus on "Cars" (the receiver).</p>
+                </div>
+            </div>
+
+            <!-- Graph Section -->
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold text-slate-800 border-b-2 border-slate-100 pb-2 mb-2">Timeline
+                    Visualization</h2>
+                <p class="text-sm text-slate-500 mb-2">How this action sits in time relative to now.</p>
+
+                <div class="timeline-container bg-slate-50 rounded-xl border border-slate-200 overflow-hidden px-4">
+                    <!-- Base Timeline Axis -->
+                    <div class="timeline-axis"></div>
+
+                    <!-- Reference Markers -->
+                    <div class="timeline-marker marker-past"></div>
+                    <div class="timeline-label" style="left: 20%">Past</div>
+
+                    <div class="timeline-marker marker-present"></div>
+                    <div class="timeline-label" style="left: 50%; color: #334155;">Present</div>
+
+                    <div class="timeline-marker marker-future"></div>
+                    <div class="timeline-label" style="left: 80%">Future</div>
+
+                    <!-- Dynamic Graph Elements (Injected via JS) -->
+                    <div id="graph-elements">
+                        <!-- Example: <div class="action-point" style="left: 50%"></div> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="bg-slate-50 p-4 sm:px-10 border-t border-slate-200 flex justify-between items-center">
+            <button id="btn-prev"
+                class="px-6 py-2.5 rounded-lg text-slate-600 font-semibold bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">
+                &larr; Back
+            </button>
+
+            <div class="flex space-x-1" id="pagination-dots">
+                <!-- Dots injected via JS -->
+            </div>
+
+            <button id="btn-next"
+                class="px-6 py-2.5 rounded-lg text-white font-semibold bg-blue-600 hover:bg-blue-700 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+                Next &rarr;
+            </button>
+        </div>
+    </div>
+
+    <script src="../js/passive_tense.js"></script>
+</body>
+
+</html>
