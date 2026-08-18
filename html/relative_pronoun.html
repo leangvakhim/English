@@ -65,7 +65,7 @@
 
 <body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
 
-    <div class="max-w-5xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-[85vh] sm:h-[80vh]">
+    <div class="max-w-4xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col h-[85vh] sm:h-[80vh]">
 
         <!-- Header -->
         <header class="bg-blue-600 text-white p-6 text-center shrink-0">
@@ -144,8 +144,77 @@
                 </div>
             </section>
 
-            <!-- Page 2: Core Relative Pronouns -->
+            <!-- Page 2: Relative (Adjective) Clauses -->
             <section id="page-1" class="page">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-2">Relative (Adjective) Clauses</h2>
+                <p class="text-slate-600 mb-6">A relative clause (also called an adjective clause) is a dependent clause
+                    that modifies a noun or pronoun. It acts exactly like a giant adjective, and it is usually
+                    introduced by a relative pronoun or adverb!</p>
+
+                <!-- Visual Breakdown -->
+                <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-8 text-center shadow-sm">
+                    <h3 class="font-semibold text-indigo-800 mb-4">How it works</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-3 mt-8">
+                        <div class="text-lg font-medium text-slate-800">The car</div>
+                        <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium shadow-md relative">
+                            that is parked outside
+                            <!-- tooltip -->
+                            <span
+                                class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-indigo-600 font-bold whitespace-nowrap bg-indigo-100 px-2 py-1 rounded shadow-sm border border-indigo-200">Adjective
+                                Clause</span>
+                        </div>
+                        <div class="text-lg font-medium text-slate-800">belongs to me.</div>
+                    </div>
+                    <div class="mt-6 text-sm text-slate-600">
+                        The clause <span class="font-bold text-indigo-600">"that is parked outside"</span> describes the
+                        noun <span class="font-bold text-slate-800">"The car"</span>.
+                    </div>
+                </div>
+
+                <!-- Types of clauses -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Defining -->
+                    <div
+                        class="bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm hover:border-blue-300 transition-colors">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="bg-blue-100 text-blue-800 text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded">No
+                                Commas</span>
+                            <h4 class="font-bold text-slate-800">Defining (Restrictive)</h4>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-3">Provides <strong>essential</strong> information needed to
+                            identify the noun. The sentence changes meaning without it.</p>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                            <p class="text-slate-800 text-sm">"Students <span
+                                    class="text-blue-600 font-semibold underline">who study hard</span> get good
+                                grades."</p>
+                            <p class="text-xs text-slate-500 mt-1">(Tells us exactly *which* students)</p>
+                        </div>
+                    </div>
+
+                    <!-- Non-Defining -->
+                    <div
+                        class="bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm hover:border-rose-300 transition-colors">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="bg-rose-100 text-rose-800 text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded">Uses
+                                Commas</span>
+                            <h4 class="font-bold text-slate-800">Non-Defining (Non-Restrictive)</h4>
+                        </div>
+                        <p class="text-sm text-slate-600 mb-3">Provides <strong>extra</strong>, non-essential
+                            information. The sentence still makes sense without it.</p>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                            <p class="text-slate-800 text-sm">"My brother<span class="text-rose-600 font-bold">,</span>
+                                <span class="text-rose-600 font-semibold underline">who lives in Paris</span><span
+                                    class="text-rose-600 font-bold">,</span> is a chef."</p>
+                            <p class="text-xs text-slate-500 mt-1">(I only have one brother; location is extra info)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 3: Core Relative Pronouns -->
+            <section id="page-2" class="page">
                 <h2 class="text-2xl font-bold text-blue-700 mb-2">Core Relative Pronouns</h2>
                 <p class="text-slate-600 mb-8">These are the most common relative pronouns. Their usage depends on
                     whether they refer to people or things, and their grammatical role (subject, object, or possessive)
@@ -209,8 +278,8 @@
                 </div>
             </section>
 
-            <!-- Page 3: Compound Relative Pronouns -->
-            <section id="page-2" class="page">
+            <!-- Page 4: Compound Relative Pronouns -->
+            <section id="page-3" class="page">
                 <h2 class="text-2xl font-bold text-emerald-700 mb-2">Compound Relative Pronouns</h2>
                 <p class="text-slate-600 mb-8">Formed by adding "-ever" or "-soever" to relative pronouns. They are more
                     general and mean "any person who," "any thing which," etc. They do not refer to a specific noun
@@ -279,8 +348,8 @@
                 </div>
             </section>
 
-            <!-- Page 4: Relative Adverbs -->
-            <section id="page-3" class="page">
+            <!-- Page 5: Relative Adverbs -->
+            <section id="page-4" class="page">
                 <h2 class="text-2xl font-bold text-purple-700 mb-2">Relative Adverbs</h2>
                 <p class="text-slate-600 mb-8">Relative adverbs connect clauses just like relative pronouns, but they
                     refer to a time, place, or reason. They can often replace a relative pronoun combined with a
@@ -369,6 +438,7 @@
                 <div class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-index="1"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-index="2"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-index="3"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-index="4"></div>
             </div>
 
             <button id="btn-next"
