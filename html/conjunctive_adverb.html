@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizing Conjunctive Adverbs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .step-page {
+            display: none;
+            opacity: 0;
+            transition: opacitya 0.4s ease-in-out;
+        }
+
+        .step-page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .graph-box {
+            @apply bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex-1 text-center relative;
+        }
+
+        .graph-adverb {
+            @apply bg-indigo-100 p-3 rounded-xl border-2 border-indigo-400 font-bold text-indigo-700 text-center shrink-0 z-10 shadow-md;
+        }
+
+        .graph-punctuation {
+            @apply text-3xl font-black text-gray-400 shrink-0 mx-2;
+        }
+
+        .connection-line {
+            @apply hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 transform -translate-y-1/2;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col items-center py-10 px-4">
+
+    <main class="w-full max-w-4xl bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col h-[85vh] min-h-[600px]">
+
+        <!-- Header & Progress -->
+        <header class="bg-indigo-600 text-white p-6 relative">
+            <h1 class="text-2xl font-bold text-center">Conjunctive Adverbs Masterclass</h1>
+            <div class="mt-4 w-full bg-indigo-800 rounded-full h-2">
+                <div id="progress-bar" class="bg-teal-400 h-2 rounded-full transition-all duration-300"
+                    style="width: 16%;"></div>
+            </div>
+            <p class="text-center text-indigo-200 text-sm mt-2" id="step-indicator">Step 1 of 6</p>
+        </header>
+
+        <!-- Content Area -->
+        <div class="p-6 md:p-10 flex-grow overflow-y-auto relative" id="content-container">
+
+            <!-- Step 1: Introduction -->
+            <div class="step-page active" data-step="0">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    What is a Conjunctive Adverb?
+                </h2>
+                <div class="space-y-6 text-lg text-gray-700">
+                    <p>A <strong>conjunctive adverb</strong> is an adverb that connects two independent clauses
+                        (complete thoughts). It provides a smooth transition and shows the relationship between the two
+                        clauses.</p>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                        <h3 class="font-bold text-blue-800 mb-2">The Golden Rule of Punctuation:</h3>
+                        <p>When connecting two independent clauses, always use a <strong>semicolon (;)</strong> before
+                            the conjunctive adverb and a <strong>comma (,)</strong> after it.</p>
+                    </div>
+
+                    <h3 class="font-bold text-xl mt-8">The General Formula (Graph)</h3>
+                    <div class="relative mt-4">
+                        <div class="connection-line"></div>
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
+                            <div class="graph-box w-full md:w-auto">
+                                <span class="font-semibold text-gray-600 block text-sm mb-1">Independent Clause 1</span>
+                                "I love reading"
+                            </div>
+                            <div class="graph-punctuation">;</div>
+                            <div class="graph-adverb w-full md:w-auto">
+                                Conjunctive Adverb
+                                <div class="text-sm font-normal">(e.g., however)</div>
+                            </div>
+                            <div class="graph-punctuation">,</div>
+                            <div class="graph-box w-full md:w-auto">
+                                <span class="font-semibold text-gray-600 block text-sm mb-1">Independent Clause 2</span>
+                                "I don't have time."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Cause, Effect & Result -->
+            <div class="step-page" data-step="1">
+                <h2 class="text-3xl font-bold text-rose-500 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Cause, Effect & Result
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-rose-50 p-6 rounded-2xl border border-rose-100">
+                        <h3 class="font-bold text-rose-800 text-lg mb-2">Meaning & Use</h3>
+                        <p class="text-gray-700">Used when the second clause is a direct result, consequence, or effect
+                            of the first clause.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h3 class="font-bold text-gray-800 text-lg mb-2">Common Words</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">therefore</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">consequently</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">thus</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">hence</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">as a result</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-xl mb-4">Visual Graph</h3>
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between mb-8 gap-2 bg-slate-50 p-6 rounded-xl">
+                    <div class="bg-rose-100 p-4 rounded-xl border border-rose-300 w-full text-center shadow-sm">
+                        <span class="text-sm font-bold text-rose-600 uppercase block mb-1">Cause</span>
+                        It rained heavily
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">;</div>
+                    <div
+                        class="bg-rose-500 text-white px-6 py-3 rounded-xl font-bold shadow-md transform scale-110 shrink-0">
+                        therefore
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">,</div>
+                    <div class="bg-rose-100 p-4 rounded-xl border border-rose-300 w-full text-center shadow-sm">
+                        <span class="text-sm font-bold text-rose-600 uppercase block mb-1">Effect</span>
+                        the match was canceled.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Contrast & Comparison -->
+            <div class="step-page" data-step="2">
+                <h2 class="text-3xl font-bold text-amber-500 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                    </svg>
+                    Contrast & Comparison
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-amber-50 p-6 rounded-2xl border border-amber-100">
+                        <h3 class="font-bold text-amber-800 text-lg mb-2">Meaning & Use</h3>
+                        <p class="text-gray-700">Used to show that the second clause contradicts, contrasts with, or
+                            presents an alternative to the first clause.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h3 class="font-bold text-gray-800 text-lg mb-2">Common Words</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">however</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">nevertheless</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">conversely</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">on the other hand</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">similarly</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-xl mb-4">Visual Graph</h3>
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between mb-8 gap-2 bg-slate-50 p-6 rounded-xl relative overflow-hidden">
+                    <div class="bg-amber-100 p-4 rounded-xl border border-amber-300 w-full text-center z-10 shadow-sm">
+                        <span class="text-sm font-bold text-amber-600 uppercase block mb-1">Idea 1</span>
+                        He studied all night
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400 z-10">;</div>
+                    <div
+                        class="bg-amber-500 text-white px-6 py-3 rounded-xl font-bold shadow-md transform scale-110 shrink-0 z-10">
+                        nevertheless
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400 z-10">,</div>
+                    <div class="bg-amber-100 p-4 rounded-xl border border-amber-300 w-full text-center z-10 shadow-sm">
+                        <span class="text-sm font-bold text-amber-600 uppercase block mb-1">Unexpected Result</span>
+                        he failed the exam.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Addition & Continuation -->
+            <div class="step-page" data-step="3">
+                <h2 class="text-3xl font-bold text-emerald-500 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Addition & Continuation
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100">
+                        <h3 class="font-bold text-emerald-800 text-lg mb-2">Meaning & Use</h3>
+                        <p class="text-gray-700">Used when the second clause adds more information to support or build
+                            upon the idea presented in the first clause.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h3 class="font-bold text-gray-800 text-lg mb-2">Common Words</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">furthermore</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">moreover</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">additionally</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">also</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">besides</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-xl mb-4">Visual Graph</h3>
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between mb-8 gap-2 bg-slate-50 p-6 rounded-xl">
+                    <div class="bg-emerald-100 p-4 rounded-xl border border-emerald-300 w-full text-center shadow-sm">
+                        <span class="text-sm font-bold text-emerald-600 uppercase block mb-1">Point A</span>
+                        The rent is affordable
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">;</div>
+                    <div
+                        class="bg-emerald-500 text-white px-6 py-3 rounded-xl font-bold shadow-md transform scale-110 shrink-0">
+                        furthermore
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">,</div>
+                    <div class="bg-emerald-100 p-4 rounded-xl border border-emerald-300 w-full text-center shadow-sm">
+                        <span class="text-sm font-bold text-emerald-600 uppercase block mb-1">Added Point B</span>
+                        the location is perfect.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Emphasis & Clarity -->
+            <div class="step-page" data-step="4">
+                <h2 class="text-3xl font-bold text-purple-500 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                        </path>
+                    </svg>
+                    Emphasis & Clarity
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100">
+                        <h3 class="font-bold text-purple-800 text-lg mb-2">Meaning & Use</h3>
+                        <p class="text-gray-700">Used to stress a point, reinforce the previous statement, or clarify
+                            what was just said with specific details.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h3 class="font-bold text-gray-800 text-lg mb-2">Common Words</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">indeed</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">in fact</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">certainly</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">namely</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">undoubtedly</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-xl mb-4">Visual Graph</h3>
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between mb-8 gap-2 bg-slate-50 p-6 rounded-xl">
+                    <div class="bg-purple-100 p-4 rounded-xl border border-purple-300 w-full text-center shadow-sm">
+                        <span class="text-sm font-bold text-purple-600 uppercase block mb-1">Initial Statement</span>
+                        She is a brilliant artist
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">;</div>
+                    <div
+                        class="bg-purple-500 text-white px-6 py-3 rounded-xl font-bold shadow-md transform scale-110 shrink-0">
+                        in fact
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">,</div>
+                    <div class="bg-purple-100 p-4 rounded-xl border border-purple-300 w-full text-center shadow-sm">
+                        <span class="text-sm font-bold text-purple-600 uppercase block mb-1">Stronger Emphasis</span>
+                        she just won a national award.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Time, Sequence & Summary -->
+            <div class="step-page" data-step="5">
+                <h2 class="text-3xl font-bold text-sky-500 mb-6 flex items-center">
+                    <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Time, Sequence & Summary
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-sky-50 p-6 rounded-2xl border border-sky-100">
+                        <h3 class="font-bold text-sky-800 text-lg mb-2">Meaning & Use</h3>
+                        <p class="text-gray-700">Used to show chronological order, simultaneous events, or to summarize
+                            a series of thoughts into a conclusion.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                        <h3 class="font-bold text-gray-800 text-lg mb-2">Common Words</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">meanwhile</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">subsequently</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">finally</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">then</span>
+                            <span class="bg-white px-3 py-1 rounded-full border shadow-sm">in conclusion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-xl mb-4">Visual Graph</h3>
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between mb-8 gap-2 bg-slate-50 p-6 rounded-xl">
+                    <div class="bg-sky-100 p-4 rounded-xl border border-sky-300 w-full text-center shadow-sm relative">
+                        <span class="text-sm font-bold text-sky-600 uppercase block mb-1">Event A (First)</span>
+                        We chopped the vegetables
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">;</div>
+                    <div
+                        class="bg-sky-500 text-white px-6 py-3 rounded-xl font-bold shadow-md transform scale-110 shrink-0">
+                        meanwhile
+                    </div>
+                    <div class="text-3xl font-bold text-gray-400">,</div>
+                    <div class="bg-sky-100 p-4 rounded-xl border border-sky-300 w-full text-center shadow-sm relative">
+                        <span class="text-sm font-bold text-sky-600 uppercase block mb-1">Event B (Simultaneous)</span>
+                        the water was boiling.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer / Navigation Controls -->
+        <footer class="bg-gray-50 p-6 border-t border-gray-200 flex justify-between items-center shrink-0">
+            <button id="btn-back"
+                class="px-6 py-3 rounded-xl font-bold text-gray-600 bg-white border border-gray-300 shadow-sm hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                &larr; Back
+            </button>
+            <button id="btn-next"
+                class="px-6 py-3 rounded-xl font-bold text-white bg-indigo-600 shadow-md hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                Next &rarr;
+            </button>
+        </footer>
+    </main>
+
+    <script src="../js/conjunctive_adverb.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjunctions Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* Light slate background */
+            color: #334155;
+            /* Slate text */
+            overflow-x: hidden;
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Diagram Styles */
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .node {
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .node-main {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border: 2px solid #bae6fd;
+        }
+
+        .node-coord {
+            background-color: #dcfce7;
+            color: #15803d;
+            border: 2px solid #bbf7d0;
+        }
+
+        .node-correl {
+            background-color: #fef08a;
+            color: #a16207;
+            border: 2px solid #fde047;
+        }
+
+        .node-subord {
+            background-color: #f3e8ff;
+            color: #7e22ce;
+            border: 2px solid #e9d5ff;
+        }
+
+        .line-horizontal {
+            height: 2px;
+            background-color: #94a3b8;
+            flex-grow: 1;
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        .line-horizontal::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #94a3b8;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .line-vertical {
+            width: 2px;
+            background-color: #94a3b8;
+            height: 2rem;
+            margin: 0 auto;
+        }
+
+        /* Syntax Highlight Styles */
+        .hl-conj {
+            font-weight: 700;
+            color: #ef4444;
+            background-color: #fee2e2;
+            padding: 0 0.25rem;
+            border-radius: 0.25rem;
+        }
+
+        .hl-clause1 {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .hl-clause2 {
+            color: #059669;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+
+    <main class="w-full max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col min-h-[80vh]">
+
+        <!-- Header -->
+        <header class="bg-indigo-600 text-white p-6 text-center">
+            <h1 class="text-3xl font-bold tracking-tight">Mastering Conjunctions</h1>
+            <p class="text-indigo-200 mt-2">The Glue of English Grammar</p>
+        </header>
+
+        <!-- Content Area -->
+        <div class="flex-grow p-6 sm:p-10 relative">
+
+            <!-- Page 1: Introduction -->
+            <div id="page-0" class="page active">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b-2 border-indigo-100 pb-2">What is a
+                    Conjunction?</h2>
+
+                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mb-6 rounded-r">
+                    <p class="text-lg"><strong>Meaning:</strong> A conjunction is a word used to connect other words,
+                        phrases, or clauses together. They are the "joiners" that help us communicate complex ideas
+                        smoothly.</p>
+                </div>
+
+                <p class="mb-4">Without conjunctions, we would have to speak in short, choppy sentences.</p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                        <h3 class="font-bold text-red-700 mb-2">Without Conjunctions:</h3>
+                        <p class="italic text-slate-600">I like cooking. I like eating. I don't like washing dishes.</p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-100">
+                        <h3 class="font-bold text-green-700 mb-2">With Conjunctions:</h3>
+                        <p class="italic text-slate-600">I like cooking <span class="hl-conj">and</span> eating, <span
+                                class="hl-conj">but</span> I don't like washing dishes.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold mt-8 mb-4">The Three Main Types</h3>
+                <div class="diagram-container flex-col gap-4">
+                    <div class="node node-main text-lg w-48">Conjunctions</div>
+                    <div class="line-vertical"></div>
+                    <div class="flex w-full justify-around mt-4">
+                        <div class="flex flex-col items-center">
+                            <div
+                                class="w-1/2 border-t-2 border-slate-400 absolute mt-[-1rem] left-1/4 right-1/4 z-0 hidden sm:block">
+                            </div>
+                            <div class="line-vertical hidden sm:block h-4 mt-[-1rem]"></div>
+                            <div class="node node-coord text-sm sm:text-base">Coordinating</div>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="line-vertical hidden sm:block h-4 mt-[-1rem]"></div>
+                            <div class="node node-correl text-sm sm:text-base">Correlative</div>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="line-vertical hidden sm:block h-4 mt-[-1rem]"></div>
+                            <div class="node node-subord text-sm sm:text-base">Subordinating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2: Coordinating Conjunctions -->
+            <div id="page-1" class="page">
+                <h2 class="text-2xl font-bold text-green-700 mb-4 border-b-2 border-green-100 pb-2">1. Coordinating
+                    Conjunctions</h2>
+
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded-r">
+                    <p class="text-lg"><strong>Meaning:</strong> These join words, phrases, or independent clauses of
+                        <strong>equal grammatical rank</strong> or importance.</p>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-2">The FANBOYS Acronym:</h3>
+                    <div
+                        class="flex flex-wrap gap-2 justify-center bg-white p-4 rounded shadow-sm border border-slate-200">
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded font-bold">F - For</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded font-bold">A - And</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded font-bold">N - Nor</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded font-bold">B - But</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded font-bold">O - Or</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded font-bold">Y - Yet</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded font-bold">S - So</span>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6 mb-4">How they connect (Graph)</h3>
+                <div class="diagram-container">
+                    <div class="text-center">
+                        <span class="hl-clause1 px-2 py-1 bg-blue-50 rounded border border-blue-200">Independent Clause
+                            / Word</span>
+                    </div>
+                    <div class="line-horizontal"></div>
+                    <div class="node node-coord rounded-full px-4 py-2">FANBOYS</div>
+                    <div class="line-horizontal"></div>
+                    <div class="text-center">
+                        <span class="hl-clause2 px-2 py-1 bg-emerald-50 rounded border border-emerald-200">Independent
+                            Clause / Word</span>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-slate-500 mt-[-1rem] mb-6">Equal weight on both sides.</p>
+
+                <h3 class="text-xl font-semibold mb-4">Examples in Action:</h3>
+                <ul class="space-y-4">
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100">
+                        <p class="mb-1"><strong>Joining Words:</strong> She bought <span
+                                class="hl-clause1">apples</span> <span class="hl-conj">and</span> <span
+                                class="hl-clause2">bananas</span>.</p>
+                        <p class="text-sm text-slate-500">Connects two nouns.</p>
+                    </li>
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100">
+                        <p class="mb-1"><strong>Joining Independent Clauses:</strong> <span class="hl-clause1">I wanted
+                                to go for a walk</span>, <span class="hl-conj">but</span> <span class="hl-clause2">it
+                                started to rain</span>.</p>
+                        <p class="text-sm text-slate-500">Notice the comma before 'but' when joining two complete
+                            sentences.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Page 3: Correlative Conjunctions -->
+            <div id="page-2" class="page">
+                <h2 class="text-2xl font-bold text-yellow-600 mb-4 border-b-2 border-yellow-100 pb-2">2. Correlative
+                    Conjunctions</h2>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 rounded-r">
+                    <p class="text-lg"><strong>Meaning:</strong> These conjunctions always come in
+                        <strong>pairs</strong>. They work together to connect grammatically equal elements in a
+                        sentence.</p>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-2">Common Pairs:</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
+                        <div class="p-2 bg-yellow-100 text-yellow-800 rounded border border-yellow-200">Both ... And
+                        </div>
+                        <div class="p-2 bg-yellow-100 text-yellow-800 rounded border border-yellow-200">Either ... Or
+                        </div>
+                        <div class="p-2 bg-yellow-100 text-yellow-800 rounded border border-yellow-200">Neither ... Nor
+                        </div>
+                        <div class="p-2 bg-yellow-100 text-yellow-800 rounded border border-yellow-200">Not only ... But
+                            also</div>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6 mb-4">How they connect (Graph)</h3>
+                <div class="diagram-container flex-wrap justify-center gap-2 sm:gap-4">
+                    <div class="node node-correl !py-1 !px-2 text-sm sm:text-base">Pair 1</div>
+                    <div class="text-center">
+                        <span class="hl-clause1 px-2 py-1 bg-blue-50 rounded border border-blue-200">Element A</span>
+                    </div>
+                    <div class="text-slate-400 text-xl font-bold">+</div>
+                    <div class="node node-correl !py-1 !px-2 text-sm sm:text-base">Pair 2</div>
+                    <div class="text-center">
+                        <span class="hl-clause2 px-2 py-1 bg-emerald-50 rounded border border-emerald-200">Element
+                            B</span>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-slate-500 mt-[-1rem] mb-6">Element A and Element B must be
+                    grammatically parallel (e.g., noun + noun).</p>
+
+                <h3 class="text-xl font-semibold mb-4">Examples in Action:</h3>
+                <ul class="space-y-4">
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100">
+                        <p class="mb-1">I will eat <span class="hl-conj">either</span> <span
+                                class="hl-clause1">pizza</span> <span class="hl-conj">or</span> <span
+                                class="hl-clause2">pasta</span> for dinner.</p>
+                        <p class="text-sm text-slate-500">Joining two nouns.</p>
+                    </li>
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100">
+                        <p class="mb-1">She is <span class="hl-conj">not only</span> <span
+                                class="hl-clause1">smart</span> <span class="hl-conj">but also</span> <span
+                                class="hl-clause2">hardworking</span>.</p>
+                        <p class="text-sm text-slate-500">Joining two adjectives. Notice how the sentence feels
+                            balanced.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Page 4: Subordinating Conjunctions -->
+            <div id="page-3" class="page">
+                <h2 class="text-2xl font-bold text-purple-700 mb-4 border-b-2 border-purple-100 pb-2">3. Subordinating
+                    Conjunctions</h2>
+
+                <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-6 rounded-r">
+                    <p class="text-lg"><strong>Meaning:</strong> These connect an independent clause (a complete
+                        thought) to a dependent clause (an incomplete thought). They show a relationship like cause,
+                        time, or condition.</p>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-2">Common Subordinators:</h3>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded">Because</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded">Although</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded">Since</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded">If</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded">When</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded">While</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded">Unless</span>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-semibold mt-6 mb-4">How they connect (Graph)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="diagram-container !m-0 flex-col items-center p-4">
+                        <span class="text-sm font-bold text-slate-400 mb-2">Structure 1</span>
+                        <div class="flex items-center w-full justify-center">
+                            <span class="hl-clause1 px-2 py-1 text-sm bg-blue-50 rounded border border-blue-200">Main
+                                (Independent)</span>
+                            <div class="w-4 h-1 bg-slate-300 mx-1"></div>
+                            <span class="node node-subord !py-0.5 !px-2 text-xs">Conj.</span>
+                            <div class="w-4 h-1 bg-slate-300 mx-1"></div>
+                            <span
+                                class="hl-clause2 px-2 py-1 text-sm bg-red-50 rounded border border-red-200 border-dashed">Subordinate
+                                (Dependent)</span>
+                        </div>
+                    </div>
+                    <div class="diagram-container !m-0 flex-col items-center p-4">
+                        <span class="text-sm font-bold text-slate-400 mb-2">Structure 2 (Comma needed)</span>
+                        <div class="flex items-center w-full justify-center">
+                            <span class="node node-subord !py-0.5 !px-2 text-xs">Conj.</span>
+                            <div class="w-4 h-1 bg-slate-300 mx-1"></div>
+                            <span
+                                class="hl-clause2 px-2 py-1 text-sm bg-red-50 rounded border border-red-200 border-dashed">Subordinate
+                                (Dependent)</span>
+                            <span class="mx-1 text-xl font-bold">,</span>
+                            <span class="hl-clause1 px-2 py-1 text-sm bg-blue-50 rounded border border-blue-200">Main
+                                (Independent)</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-slate-500 mt-2 mb-6">The conjunction makes the clause it attaches to
+                    dependent.</p>
+
+                <h3 class="text-xl font-semibold mb-4">Examples in Action:</h3>
+                <ul class="space-y-4">
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100">
+                        <p class="mb-1"><span class="hl-clause1">I stayed home</span> <span
+                                class="hl-conj">because</span> <span class="hl-clause2">it was raining</span>.</p>
+                        <p class="text-sm text-slate-500">Structure 1: No comma needed.</p>
+                    </li>
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100">
+                        <p class="mb-1"><span class="hl-conj">Although</span> <span class="hl-clause2">she was
+                                tired</span>, <span class="hl-clause1">she finished her homework</span>.</p>
+                        <p class="text-sm text-slate-500">Structure 2: Dependent clause first, so a comma is required.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Page 5: Summary -->
+            <div id="page-4" class="page">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b-2 border-slate-200 pb-2">Quick Summary</h2>
+
+                <div class="overflow-x-auto mt-6">
+                    <table class="min-w-full bg-white border border-slate-200 rounded-lg overflow-hidden">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th
+                                    class="py-3 px-4 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    Type</th>
+                                <th
+                                    class="py-3 px-4 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    Function</th>
+                                <th
+                                    class="py-3 px-4 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+                                    Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="py-4 px-4 text-sm font-bold text-green-700">Coordinating</td>
+                                <td class="py-4 px-4 text-sm text-slate-600">Joins equals (words, phrases, independent
+                                    clauses).</td>
+                                <td class="py-4 px-4 text-sm text-slate-600">and, but, or, so (FANBOYS)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-4 text-sm font-bold text-yellow-600">Correlative</td>
+                                <td class="py-4 px-4 text-sm text-slate-600">Works in pairs to join grammatically equal
+                                    elements.</td>
+                                <td class="py-4 px-4 text-sm text-slate-600">either/or, both/and</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-4 text-sm font-bold text-purple-700">Subordinating</td>
+                                <td class="py-4 px-4 text-sm text-slate-600">Joins dependent clause to independent
+                                    clause.</td>
+                                <td class="py-4 px-4 text-sm text-slate-600">because, although, if, since</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 text-center bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+                    <p class="text-lg font-semibold text-indigo-800">You've completed the guide!</p>
+                    <p class="text-indigo-600 mt-2">Use the navigation below to review any section.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Footer -->
+        <footer class="bg-slate-50 p-4 border-t border-slate-200 flex justify-between items-center mt-auto">
+            <button id="prevBtn"
+                class="px-6 py-2 bg-white text-slate-700 border border-slate-300 rounded hover:bg-slate-100 font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                disabled>
+                &larr; Back
+            </button>
+
+            <div class="flex space-x-2" id="dotsContainer">
+                <!-- Dots injected by JS -->
+            </div>
+
+            <button id="nextBtn"
+                class="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 font-semibold transition-colors shadow-sm">
+                Next &rarr;
+            </button>
+        </footer>
+    </main>
+
+    <script src="../js/conjunction.js"></script>
+</body>
+
+</html>
