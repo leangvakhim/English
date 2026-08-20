@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepositions Visualizer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.4s ease-out forwards',
+                        'slide-up': 'slideUp 0.4s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .step-container {
+            display: none;
+        }
+
+        .step-container.active {
+            display: block;
+            animation: slideUp 0.4s ease-out forwards;
+        }
+
+        /* Custom graph styles */
+        .graph-box {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background-color: #e0e7ff;
+            border: 3px solid #6366f1;
+            border-radius: 8px;
+        }
+
+        .graph-ball {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans selection:bg-blue-200 selection:text-blue-900">
+
+    <main class="flex-grow flex flex-col items-center justify-center p-4 sm:p-8">
+
+        <div
+            class="w-full max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col border border-slate-100">
+
+            <!-- Header & Progress Bar -->
+            <header class="bg-slate-50 border-b border-slate-200 px-6 py-4 flex flex-col gap-3">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                            </path>
+                        </svg>
+                        Prepositions Visualizer
+                    </h1>
+                    <span id="step-counter"
+                        class="text-sm font-semibold text-slate-500 bg-slate-200 px-3 py-1 rounded-full">Step 1 of
+                        7</span>
+                </div>
+
+                <div class="w-full bg-slate-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-500 ease-out"
+                        style="width: 14.28%"></div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div id="content-area" class="p-6 sm:p-10 min-h-[500px] flex flex-col">
+                <!-- Dynamic steps will be injected here via JavaScript -->
+            </div>
+
+            <!-- Footer Navigation -->
+            <footer class="bg-slate-50 border-t border-slate-200 px-6 py-4 flex justify-between items-center mt-auto">
+                <button id="btn-back"
+                    class="px-5 py-2.5 rounded-lg font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                    Back
+                </button>
+                <button id="btn-next"
+                    class="px-6 py-2.5 rounded-lg font-medium text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-colors flex items-center gap-2 shadow-md shadow-blue-500/30">
+                    Next
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </footer>
+        </div>
+
+        <!-- <p class="mt-6 text-sm text-slate-400">Interactive Grammar Guide &copy; 2026</p> -->
+    </main>
+
+    <script src="../js/preposition.js"></script>
+</body>
+
+</html>

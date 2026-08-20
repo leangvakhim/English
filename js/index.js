@@ -52,6 +52,13 @@ const topics = [
         url: './html/conjunction.html',
         description: 'Link words, phrases, or clauses. Explore coordinating and subordinating types.',
         subtopics: ['FANBOYS (Coordinating)', 'Subordinating Conjunctions', 'Correlative Conjunctions']
+    },
+    {
+        id: 'preposition',
+        title: 'Prepositions',
+        url: './html/preposition.html',
+        description: 'Show relationships between nouns and other words. Learn different types and uses.',
+        subtopics: ['Prepositions of Place', 'Prepositions of Time', 'Prepositions of Manner']
     }
 ];
 
